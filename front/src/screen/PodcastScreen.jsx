@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item, Button } from 'semantic-ui-react';
+import { Item, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import Podcast from '../components/Podcast';
@@ -16,8 +16,8 @@ const PodcastScreen = ({ match }) => {
 
   return (
     <>
-      <Button icon='left chevron' as={Link} to='/'>
-        <span>Back</span>
+      <Button icon as={Link} to='/' basic color='violet'>
+        <Icon name='chevron circle left' /> <span>Back</span>
       </Button>
       <Item.Group divided>
         {podcast.episodes.map((p) => (
