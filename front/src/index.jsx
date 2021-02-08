@@ -10,9 +10,4 @@ const divElement = document.createElement('div');
 divElement.className = 'root';
 document.body.appendChild(divElement);
 
-ReactDOM.render(
-  // <div className='ui container'>
-  <App />,
-  // </div>,
-  document.querySelector('.root'),
-);
+ReactDOM.render(<App />, document.querySelector('.root'));

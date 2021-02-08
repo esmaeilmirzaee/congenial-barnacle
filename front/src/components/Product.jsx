@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 
+import { Link } from 'react-router-dom';
+
 import Rating from './Rating';
 import Category from './Category';
 
@@ -8,9 +10,11 @@ const Product = ({ product }) => {
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <Card>
-        <Image src={product.img} />
+        <Image src={product.img} as={Link} to={`/podcast/:${product._id}`} />
         <Card.Content>
-          <Card.Header>{product.name}</Card.Header>
+          <Card.Header as={Link} to={`/podcast/:${product._id}`}>
+            {product.name}
+          </Card.Header>
           <Card.Meta>
             <span className='date'>
               <Rating
