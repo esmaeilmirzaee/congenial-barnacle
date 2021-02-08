@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Menu, Icon, Container, Image } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Header = () => {
-  const [path, setPath] = useState('/');
-  console.log(path);
-  const handleClick = (e, { name }) => {
-    setPath(window.location.pathname);
-  };
+const Header = (props) => {
+  let location = useLocation();
+  const [path, setPath] = useState(location.pathname);
+
   return (
     <header>
       <Menu size='large'>
@@ -23,8 +21,8 @@ const Header = () => {
           <Menu.Item
             key='home'
             name='Home'
-            active={path === window.location.pathname}
-            onClick={handleClick}
+            active={path === '/'}
+            onClick={(e) => setPath('/')}
             as={Link}
             to='/'
           >
@@ -35,8 +33,8 @@ const Header = () => {
             <Menu.Item
               key='cart'
               name='Cart'
-              active={path === window.location.pathname}
-              onClick={handleClick}
+              active={path === '/cart'}
+              onClick={(e) => setPath('/cart')}
               as={Link}
               to='/cart'
             >
@@ -46,8 +44,8 @@ const Header = () => {
             <Menu.Item
               key='signin'
               name='Sign In'
-              active={path === window.location.pathname}
-              onClick={handleClick}
+              active={path === '/login'}
+              onClick={(e) => setPath('/login')}
               as={Link}
               to='/login'
             >

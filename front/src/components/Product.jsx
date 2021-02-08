@@ -10,9 +10,9 @@ const Product = ({ product }) => {
   return (
     <Grid.Column mobile={16} tablet={8} computer={4}>
       <Card>
-        <Image src={product.img} as={Link} to={`/podcast/:${product._id}`} />
+        <Image src={product.img} as={Link} to={`/podcast/${product._id}`} />
         <Card.Content>
-          <Card.Header as={Link} to={`/podcast/:${product._id}`}>
+          <Card.Header as={Link} to={`/podcast/${product._id}`}>
             {product.name}
           </Card.Header>
           <Card.Meta>
