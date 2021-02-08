@@ -20,6 +20,10 @@ const HomeScreen = ({ title }) => {
   );
 };
 
+HomeScreen.defaultProps = {
+  title: 'Latest',
+};
+
 HomeScreen.propTypes = {
   title: PropTypes.string,
 };
