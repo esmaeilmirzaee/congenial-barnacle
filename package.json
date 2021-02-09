@@ -6,7 +6,8 @@
   "author": "Esmaeil MIRZAEE <EsmaeilMIRZAEE@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "mongoose": "^5.11.15"
   },
   "scripts": {
     "e": "node back/main.js",

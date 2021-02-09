@@ -2,10 +2,14 @@ const express = require('express');
 const podcasts = require('./data/podcasts');
 const episodes = require('./data/episodes');
 
-const dotenv = require('dotenv');
+const connectDB = require('./config/db');
 
+const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
+// GO DOWN
+
+connectDB();
 
 app.get('/', (req, res) => {
   res.send({ message: 'OK' });

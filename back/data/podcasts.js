@@ -1,3 +1,4 @@
+// collection
 const podcasts = [
   {
     _id: '1',
@@ -95,6 +96,7 @@ const podcasts = [
     key: 'planet_money',
     img: '/assets/img/planet_money.png',
   },
+  // document
   {
     _id: '9',
     name: 'Fresh Air',
