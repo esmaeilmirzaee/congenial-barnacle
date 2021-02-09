@@ -7,33 +7,25 @@ import Podcast from '../components/Podcast';
 
 const PodcastScreen = ({ match }) => {
   const [episodes, setEpisodes] = useState([]);
-  const [podcasts, setPodcasts] = useState([]);
-  const [image, setImage] = useState('');
-  const [podcast, setPodcast] = useState(null);
+  const [image, setImage] = useState([]);
 
   useEffect(() => {
     const fetchPodcasts = async () => {
       let { data } = await axios.get('/api/podcasts');
-      setPodcasts(data);
-      setPodcast(podcasts);
-      setImage(podcasts.find((p) => p._id === match.params.id).img);
+      setImage(data.find((p) => p._id === match.params.id).img);
     };
     fetchPodcasts();
-  }, []);
+  });
 
   useEffect(() => {
     const fetchEpisodes = async () => {
-      let { data } = await axios.get('/api/podcasts/episodes/');
-      setEpisodes(data);
+      let { data } = await axios.get(
+        `/api/podcasts/${match.params.id}/episodes/`,
+      );
+      setEpisodes(data.episodes);
     };
     fetchEpisodes();
-  }, []);
-
-  // Note to myself -> Be careful here for type of _id and id
-  // let podcast = episodes.find((p) => p._id === Number(match.params.id));
-
-  // What is the best?
-  // let image = podcasts.find((p) => p._id === match.params.id).img;
+  });
 
   return (
     <>
@@ -41,7 +33,7 @@ const PodcastScreen = ({ match }) => {
         <Icon name='chevron circle left' /> <span>Back</span>
       </Button>
       <Item.Group divided>
-        {podcast.episodes.map((p) => (
+        {episodes.map((p) => (
           <Podcast key={p._eid} podcast={p} image={image} />
         ))}
       </Item.Group>

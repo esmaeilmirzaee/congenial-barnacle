@@ -12,7 +12,7 @@ const Header = (props) => {
         <Container>
           <Menu.Item>
             <Image
-              src={'logo192.png'}
+              src={'./logo192.png'}
               size='mini'
               as='a'
               href='https://homecast.ir'
