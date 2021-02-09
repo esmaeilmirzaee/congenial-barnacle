@@ -1,10 +1,11 @@
 const express = require('express');
+const colors = require('colors');
+const dotenv = require('dotenv');
 const podcasts = require('./data/podcasts');
 const episodes = require('./data/episodes');
 
 const connectDB = require('./config/db');
 
-const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 // GO DOWN
@@ -30,5 +31,5 @@ app.get('/api/podcasts/:id/episodes', (req, res) => {
 });
 
 app.listen(process.env.PORT || 5000, () => {
-  console.log(`I am listening on ${process.env.PORT}`);
+  console.log(`I am listening on ${process.env.PORT}`.yellow.bold);
 });
