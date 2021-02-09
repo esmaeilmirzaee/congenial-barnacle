@@ -1,0 +1,14 @@
+{
+  "name": "mern_bt",
+  "version": "1.0.0",
+  "main": "main.js",
+  "repository": "git@github.com:esmaeilmirzaee/congenial-barnacle.git",
+  "author": "Esmaeil MIRZAEE <EsmaeilMIRZAEE@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "scripts": {
+    "e": "node back/main.js"
+  }
+}
