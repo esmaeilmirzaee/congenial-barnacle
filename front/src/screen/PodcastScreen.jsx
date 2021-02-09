@@ -15,7 +15,7 @@ const PodcastScreen = ({ match }) => {
       setImage(data.find((p) => p._id === match.params.id).img);
     };
     fetchPodcasts();
-  });
+  }, [match]);
 
   useEffect(() => {
     const fetchEpisodes = async () => {
@@ -25,7 +25,7 @@ const PodcastScreen = ({ match }) => {
       setEpisodes(data.episodes);
     };
     fetchEpisodes();
-  });
+  }, [match]);
 
   return (
     <>
