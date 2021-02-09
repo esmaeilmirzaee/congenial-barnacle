@@ -1,9 +1,11 @@
 const express = require('express');
 const podcasts = require('./data/podcasts');
 const episodes = require('./data/episodes');
-const app = express();
 
-let port = '5000';
+const dotenv = require('dotenv');
+
+const app = express();
+dotenv.config();
 
 app.get('/', (req, res) => {
   res.send({ message: 'OK' });
@@ -23,6 +25,6 @@ app.get('/api/podcasts/:id/episodes', (req, res) => {
   res.json(episode);
 });
 
-app.listen(port, () => {
-  console.log(`I am listening on ${port}`);
+app.listen(process.env.PORT || 5000, () => {
+  console.log(`I am listening on ${process.env.PORT}`);
 });
