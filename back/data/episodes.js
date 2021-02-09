@@ -1,4 +1,4 @@
-const podcasts = [
+const episodes = [
   {
     _id: 1,
     episodes: [
@@ -426,4 +426,4 @@ const podcasts = [
   },
 ];
 
-export default podcasts;
+module.exports = episodes;

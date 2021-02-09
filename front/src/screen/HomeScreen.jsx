@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
-import products from '../tmp/products';
 import Product from '../components/Product';
 
-const HomeScreen = ({ title }) => {
+const HomeScreen = ({ title = 'Podcasts' }) => {
+  const [podcasts, setPodcasts] = useState([]);
+
+  useEffect(() => {
+    const fetchPodcasts = async () => {
+      let { data } = await axios.get('/api/podcasts');
+      setPodcasts(data);
+    };
+    fetchPodcasts();
+  }, []);
+
   return (
     <div>
       <Header as='h3'>{title}</Header>
       <Grid columns={3}>
         <Grid.Row>
-          {products.map((product) => (
-            <Product key={product._id} product={product} />
+          {podcasts.map((p) => (
+            <Product key={p._id} product={p} />
           ))}
         </Grid.Row>
       </Grid>
