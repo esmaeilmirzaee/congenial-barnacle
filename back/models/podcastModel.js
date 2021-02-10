@@ -17,7 +17,16 @@ const podcastSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    category: {
+    brand: {
+      type: String,
+    },
+    category: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
+    key: {
       type: String,
       required: true,
     },

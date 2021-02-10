@@ -6,6 +6,7 @@
   "author": "Esmaeil MIRZAEE <EsmaeilMIRZAEE@gmail.com>",
   "license": "UNLICENSED",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "colors": "^1.4.0",
     "express": "^4.17.1",
     "mongoose": "^5.11.15"
@@ -14,7 +15,9 @@
     "e": "node back/main.js",
     "ui": "npm start --prefix ./front",
     "srv": "nodemon back/main",
-    "dev": "concurrently \"yarn srv\" \"yarn ui\""
+    "dev": "concurrently \"yarn srv\" \"yarn ui\"",
+    "db:import": "node back/seeder",
+    "db:destroy": "node back/seeder -d"
   },
   "devDependencies": {
     "concurrently": "^5.3.0",

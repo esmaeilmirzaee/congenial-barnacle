@@ -16,6 +16,10 @@ const episodeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    audio: {
+      type: String,
+      required: true,
+    },
     numDownloads: {
       type: Number,
       required: true,
@@ -30,6 +34,8 @@ const episodeSchema = mongoose.Schema(
       type: String,
       required: true,
     },
+    rating: { type: Number, required: true, default: 0 },
+    numReviews: { type: Number, required: true, default: 0 },
     reviews: [reviewSchema],
   },
   { timestamps: true },
