@@ -6,11 +6,16 @@ const episodes = require('./data/episodes');
 
 const connectDB = require('./config/db');
 
+const podcastRoutes = require('./routes/podcastRoutes');
+
 const app = express();
 dotenv.config();
 // GO DOWN
 
 connectDB();
+
+// middleware
+app.use('/api/podcasts', podcastRoutes);
 
 app.get('/', (req, res) => {
   res.send({ message: 'OK' });

@@ -1,7 +1,7 @@
 ## How to connect to mongo container and insert data
 
 ```bash
-docker pull mongo:4.4
+docker pull mongo:4.4.3
 
 // without authentication
 docker run -d --name mongo -p 2717:27017 -v ~/path/to/data/mongo/:/data/db/ mongo:4.4.3
