@@ -1,3 +1,20 @@
+:root {
+  --kPrimaryColour: #366cf6;
+  --kSecondaryColour: #f5f6fc;
+  --kBgLightColour: #f2f4fc;
+  --kBgDarkColour: #ebedfa;
+  --kBadgeColour: #ee376e;
+  --kGrayColour: #8793b2;
+  --kTitleTextColour: #30384d;
+  --kTextColour: #4d5875;
+}
+
+* {
+  /* background-color: var(--kBgLightColour); */
+  font-color: var(--kTextColour);
+}
+
 main {
+  /* background-color: var(--kBgLightColour); */
   min-height: 80vh;
 }
