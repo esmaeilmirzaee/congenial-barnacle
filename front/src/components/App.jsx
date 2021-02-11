@@ -13,7 +13,7 @@ const App = () => {
       <Header />
       <Container>
         <main style={{ marginTop: '1rem' }}>
-          <Route path='/podcast/:id' component={PodcastScreen} />
+          <Route path='/podcasts/:id' component={PodcastScreen} />
           {/* TODO: Bug title doesn't work */}
           <Route path='/' component={HomeScreen} title={'Trending'} exact />
         </main>

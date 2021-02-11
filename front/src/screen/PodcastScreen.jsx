@@ -12,7 +12,7 @@ const PodcastScreen = ({ match }) => {
   useEffect(() => {
     const fetchPodcasts = async () => {
       let { data } = await axios.get('/api/podcasts');
-      setImage(data.find((p) => p._id === match.params.id).img);
+      setImage(data.find((p) => p._id === match.params.id).image);
     };
     fetchPodcasts();
   }, [match]);

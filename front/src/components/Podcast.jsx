@@ -3,6 +3,7 @@ import { Button, Item } from 'semantic-ui-react';
 import Rating from './Rating';
 
 const Podcast = ({ podcast, image }) => {
+  console.log(image);
   return (
     <Item>
       <Item.Image src={image} size='small' />
