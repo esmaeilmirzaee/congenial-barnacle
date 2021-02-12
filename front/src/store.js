@@ -2,10 +2,12 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
-import { podcastListReducer } from './reducers/podcastReducers';
+import { podcastsListReducer } from './reducers/podcastsReducers';
+import { episodesListReducer } from './reducers/episodesReducers';
 
 const reducer = combineReducers({
-  podcastList: podcastListReducer,
+  podcastsList: podcastsListReducer,
+  episodesList: episodesListReducer,
 });
 
 const initialState = {};

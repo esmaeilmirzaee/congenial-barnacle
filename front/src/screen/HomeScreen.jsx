@@ -13,7 +13,7 @@ const HomeScreen = ({ title }) => {
   const dispatch = useDispatch();
 
   const { loading, error, podcasts } = useSelector(
-    (state) => state.podcastList,
+    (state) => state.podcastsList,
   );
 
   useEffect(() => {
