@@ -6,7 +6,6 @@ import {
 } from '../constants/types';
 
 export const listEpisodes = (id) => async (dispatch) => {
-  console.log('WHAT');
   try {
     dispatch({ type: EPISODES_LIST_REQUEST });
     let { data } = await axios.get(`/api/podcasts/${id}`);
