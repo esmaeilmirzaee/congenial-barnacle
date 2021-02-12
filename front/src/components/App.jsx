@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './nav/Header';
 import Footer from './nav/Footer';
 import HomeScreen from '../screen/HomeScreen';
-import PodcastScreen from '../screen/PodcastScreen';
+import PodcastDetailScreen from '../screen/PodcastDetailScreen';
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
       <Header />
       <Container>
         <main style={{ marginTop: '1rem' }}>
-          <Route path='/podcasts/:id' component={PodcastScreen} />
+          <Route path='/api/podcasts/:id' component={PodcastDetailScreen} />
           {/* TODO: Bug title doesn't work */}
           <Route path='/' component={HomeScreen} title={'Trending'} exact />
         </main>

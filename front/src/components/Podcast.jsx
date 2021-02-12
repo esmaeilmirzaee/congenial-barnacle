@@ -1,22 +1,41 @@
 import React from 'react';
-import { Button, Item } from 'semantic-ui-react';
-import Rating from './Rating';
+import { Card, Icon, Image, Grid } from 'semantic-ui-react';
 
-const Podcast = ({ podcast, image }) => {
-  console.log(image);
+import { Link } from 'react-router-dom';
+
+import Rating from './Rating';
+import Category from './Category';
+
+const Podcast = ({ podcast }) => {
   return (
-    <Item>
-      <Item.Image src={image} size='small' />
-      <Item.Content>
-        <Item.Header as='a'>{podcast.title}</Item.Header>
-        <Item.Meta>{podcast.date}</Item.Meta>
-        <Item.Description>{podcast.description}</Item.Description>
-        <Item.Extra>
-          <Button icon='play' floated='right' basic circular color='violet' />
-        </Item.Extra>
-        <Rating value={podcast.rating} text={podcast.numReviews} />
-      </Item.Content>
-    </Item>
+    <Grid.Column mobile={16} tablet={8} computer={4}>
+      <Card>
+        <Image
+          src={podcast.image}
+          as={Link}
+          to={`/api/podcasts/${podcast._id}`}
+        />
+        <Card.Content>
+          <Card.Header as={Link} to={`/api/podcasts/${podcast._id}`}>
+            {podcast.name}
+          </Card.Header>
+          <Card.Meta>
+            <span className='date'>
+              <Rating value={podcast.rating} text={podcast.numReviews} />
+            </span>
+          </Card.Meta>
+          <Card.Description>{podcast.description}</Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <span>
+            <Icon name='' />
+            {podcast.category.map((cat) => (
+              <Category key={cat} category={cat} />
+            ))}
+          </span>
+        </Card.Content>
+      </Card>
+    </Grid.Column>
   );
 };
 

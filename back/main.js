@@ -22,11 +22,6 @@ app.get('/', (req, res) => {
   res.send({ message: 'OK' });
 });
 
-app.get('/api/podcasts/:id/episodes', (req, res) => {
-  let episode = episodes.find((e) => e._id === Number(req.params.id));
-  res.json(episode);
-});
-
 app.use(errorHandler);
 
 app.use(notFound);

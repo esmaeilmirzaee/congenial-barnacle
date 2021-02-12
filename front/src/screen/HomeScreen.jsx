@@ -3,7 +3,7 @@ import { Grid, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 
-import Product from '../components/Product';
+import Podcast from '../components/Podcast';
 
 const HomeScreen = ({ title = 'Podcasts' }) => {
   const [podcasts, setPodcasts] = useState([]);
@@ -22,7 +22,7 @@ const HomeScreen = ({ title = 'Podcasts' }) => {
       <Grid columns={3}>
         <Grid.Row>
           {podcasts.map((p) => (
-            <Product key={p._id} product={p} />
+            <Podcast key={p._id} podcast={p} />
           ))}
         </Grid.Row>
       </Grid>

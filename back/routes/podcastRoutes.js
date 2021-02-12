@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Podcast = require('../models/podcastModel');
+const Episode = require('../models/episodeModel');
 
 const asyncHandler = require('express-async-handler');
 
@@ -22,11 +23,16 @@ router.get(
 router.get(
   '/:id',
   asyncHandler(async (req, res) => {
-    const podcast = await Podcast.findById(req.params.id);
-    if (podcast) {
-      res.json(podcast);
+    const image = await Podcast.find({ _id: req.params.id }, { image: 1 });
+
+    const episodes = await Episode.find({
+      podcast: req.params.id,
+    });
+    if (episodes && image) {
+      res.json({ e: episodes, i: image });
     } else {
-      res.status(404).json({ message: 'Podcast not found' });
+      res.status(404);
+      throw new Error('Podcast not found');
     }
   }),
 );

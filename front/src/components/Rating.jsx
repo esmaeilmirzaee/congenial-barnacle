@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 
+// TODO: text is the number of reviews; choose a better name
 const Rating = ({ value, text, colour }) => {
   return (
     <div className='rating'>
@@ -62,7 +63,7 @@ Rating.defaultProps = {
 
 Rating.propTypes = {
   value: PropTypes.number.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.number.isRequired,
   colour: PropTypes.string,
 };
 
