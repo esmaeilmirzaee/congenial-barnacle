@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'semantic-ui-css/semantic.min.css';
+import {Provider} from 'react-redux'
+import store from './store'
 
 import './assets/index.css';
 
@@ -10,4 +12,8 @@ const divElement = document.createElement('div');
 divElement.className = 'root';
 document.body.appendChild(divElement);
 
-ReactDOM.render(<App />, document.querySelector('.root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+  , document.querySelector('.root'));

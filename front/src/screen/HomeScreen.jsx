@@ -1,20 +1,44 @@
-import React, { useState, useEffect } from 'react';
-import { Grid, Header } from 'semantic-ui-react';
+import React, { useEffect } from 'react';
+import { Grid, Header, Placeholder, Message } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
 
 import Podcast from '../components/Podcast';
+import { listPodcasts } from '../actions/podcastActions';
 
-const HomeScreen = ({ title = 'Podcasts' }) => {
-  const [podcasts, setPodcasts] = useState([]);
+const HomeScreen = ({ title }) => {
+  const dispatch = useDispatch();
+
+  const { loading, error, podcasts } = useSelector(
+    (state) => state.podcastList,
+  );
 
   useEffect(() => {
-    const fetchPodcasts = async () => {
-      let { data } = await axios.get('/api/podcasts');
-      setPodcasts(data);
-    };
-    fetchPodcasts();
-  }, []);
+    dispatch(listPodcasts());
+  }, [dispatch]);
+
+  if (error) {
+    return (
+      <Message negative>
+        <Message.Header>We're sorry. There is something wrong.</Message.Header>
+        <p>{error.message}</p>
+      </Message>
+    );
+  }
+
+  if (loading) {
+    return (
+      <Placeholder>
+        <Placeholder.Header>
+          <Placeholder.Line length='very short' />
+          <Placeholder.Line length='medium' />
+        </Placeholder.Header>
+        <Placeholder.Paragraph>
+          <Placeholder.Line length='short' />
+        </Placeholder.Paragraph>
+      </Placeholder>
+    );
+  }
 
   return (
     <div>

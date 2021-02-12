@@ -13,6 +13,7 @@ router.get(
   '/',
   asyncHandler(async (req, res) => {
     const podcasts = await Podcast.find({});
+
     res.json(podcasts);
   }),
 );
