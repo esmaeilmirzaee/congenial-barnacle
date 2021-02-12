@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
-import { Grid, Header, Placeholder, Message } from 'semantic-ui-react';
+import { Grid, Header } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Podcast from '../components/Podcast';
 import { listPodcasts } from '../actions/podcastActions';
+
+import Loader from '../components/Loader';
+import MessageHandler from '../components/MessageHandler';
 
 const HomeScreen = ({ title }) => {
   const dispatch = useDispatch();
@@ -18,26 +21,11 @@ const HomeScreen = ({ title }) => {
   }, [dispatch]);
 
   if (error) {
-    return (
-      <Message negative>
-        <Message.Header>We're sorry. There is something wrong.</Message.Header>
-        <p>{error.message}</p>
-      </Message>
-    );
+    return <MessageHandler message={error} colour='red' />;
   }
 
   if (loading) {
-    return (
-      <Placeholder>
-        <Placeholder.Header>
-          <Placeholder.Line length='very short' />
-          <Placeholder.Line length='medium' />
-        </Placeholder.Header>
-        <Placeholder.Paragraph>
-          <Placeholder.Line length='short' />
-        </Placeholder.Paragraph>
-      </Placeholder>
-    );
+    return <Loader />;
   }
 
   return (
