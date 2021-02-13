@@ -4,7 +4,7 @@ import {
   EPISODES_LIST_FAIL,
 } from '../constants/types';
 
-export const episodesListReducer = (state = { episodes: {} }, action) => {
+export const episodesListReducer = (state = [{ episodes: {} }], action) => {
   if (action.type === EPISODES_LIST_REQUEST) {
     return { loading: true, payload: [] };
   }
