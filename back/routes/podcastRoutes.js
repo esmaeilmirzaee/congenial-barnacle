@@ -6,6 +6,17 @@ const Episode = require('../models/episodeModel');
 
 const asyncHandler = require('express-async-handler');
 
+// @desc Fetch a podcast
+// @route GET /api/p/:id
+// @access Public
+router.get(
+  '/p/:id',
+  asyncHandler(async (req, res) => {
+    const podcast = await Podcast.findById(req.params.id);
+    res.json(podcast);
+  }),
+);
+
 // @desc Fetch all podcasts
 // @route GET /api/podcasts
 // @access Public
