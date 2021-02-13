@@ -31,12 +31,14 @@ const importDB = async () => {
       return e.episodes.map((episode) => {
         return {
           ...episode,
+          image: createdPodcasts[e._id - 1].image,
           podcast: createdPodcasts[e._id - 1]._id,
         };
       });
     });
 
     flatEpisodes = [].concat(...sampleEpisodes);
+    console.log(flatEpisodes);
     let createdEpisodes = await Episode.insertMany(flatEpisodes);
 
     console.log(`${createdUsers.length} users added.`.green.inverse);

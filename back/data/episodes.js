@@ -10,6 +10,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -20,6 +21,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -35,6 +37,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -45,6 +48,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -55,6 +59,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -65,6 +70,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -80,6 +86,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -90,6 +97,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -100,6 +108,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -110,6 +119,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -120,6 +130,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -135,6 +146,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -145,6 +157,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -155,6 +168,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -165,6 +179,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -175,6 +190,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -185,6 +201,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -200,6 +217,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -210,6 +228,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -220,6 +239,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -230,6 +250,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -245,6 +266,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -255,6 +277,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -270,6 +293,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -280,6 +304,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -290,6 +315,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -300,6 +326,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -310,6 +337,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],
@@ -326,6 +354,7 @@ const episodes = [
 
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -336,6 +365,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
       {
@@ -346,6 +376,7 @@ const episodes = [
         numListeners: 1,
         duration: '20:00',
         rating: 4.5,
+        image: '',
         numReviews: 100,
       },
     ],

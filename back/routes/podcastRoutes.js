@@ -23,13 +23,11 @@ router.get(
 router.get(
   '/:id',
   asyncHandler(async (req, res) => {
-    const image = await Podcast.find({ _id: req.params.id }, { image: 1 });
-
     const episodes = await Episode.find({
       podcast: req.params.id,
     });
-    if (episodes && image) {
-      res.json({ e: episodes, i: image });
+    if (episodes) {
+      res.json(episodes);
     } else {
       res.status(404);
       throw new Error('Podcast not found');
