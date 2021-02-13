@@ -16,14 +16,14 @@ const App = () => {
   return (
     <Router>
       <Header />
-      <Container>
-        <main style={{ marginTop: '1rem' }}>
+      <Container style={{ margin: '1rem 0' }}>
+        <main>
           <Route path='/api/podcasts/:id' component={PodcastDetailScreen} />
           {/* TODO: Bug title doesn't work */}
           <Route path='/' component={HomeScreen} title={'Trending'} exact />
         </main>
       </Container>
-      <Footer />
+      {/* <Footer /> */}
       {active && episode && <PlayerScreen episode={episode} />}
     </Router>
   );
