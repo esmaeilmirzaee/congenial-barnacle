@@ -12,40 +12,30 @@ import MessageHandler from '../components/MessageHandler';
 
 const PodcastDetailScreen = ({ match }) => {
   const dispatch = useDispatch();
+  let { loading, error, episodes } = useSelector((state) => state.episodesList);
 
   useEffect(() => {
     dispatch(listEpisodes(match.params.id));
-  }, [match, dispatch]);
+  }, [dispatch, match]);
 
-  let episodesList = useSelector((state) => state.episodesList);
-  let { loading, error, payload } = episodesList;
-
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (error) {
-    return <MessageHandler message={error} color='red' />;
-  }
-
-  if (payload) {
-    let image = payload.i[0].image;
-    let episodes = payload.e;
-    return (
-      <>
-        <Button icon as={Link} to='/' basic color='violet'>
-          <Icon name='chevron circle left' /> <span>Back</span>
-        </Button>
+  return (
+    <>
+      <Button icon as={Link} to='/' basic color='violet'>
+        <Icon name='chevron circle left' /> <span>Back</span>
+      </Button>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <MessageHandler message={error} color='red' />
+      ) : (
         <Item.Group divided>
           {episodes.map((p) => (
-            <Episode key={p._id} episode={p} image={image} />
+            <Episode key={p._id} episode={p} />
           ))}
         </Item.Group>
-      </>
-    );
-  } else {
-    return <h1>NOT</h1>;
-  }
+      )}
+    </>
+  );
 };
 
 export default PodcastDetailScreen;
