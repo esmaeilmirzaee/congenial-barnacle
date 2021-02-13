@@ -1,0 +1,70 @@
+.my__player {
+  max-height: 120px;
+  min-width: 100vw;
+  position: sticky;
+  bottom: 0;
+  left: 0;
+  background-color: #ebedfa;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr 2fr;
+  gap: 0em 0.5em;
+  grid-template-areas: '. . . .';
+  box-sizing: border-box;
+}
+
+.my__player .my__image img {
+  max-width: 5rem;
+  max-height: 5rem;
+  border-radius: 5px;
+  display: flex;
+  margin: 1rem 1rem 1rem auto;
+  box-shadow: 0rem 0rem 0.5rem rgb(48, 56, 77);
+}
+
+.my__player .my__info {
+  color: #30384d;
+}
+
+.my__player .my__info .my__title {
+  font-weight: 700;
+  padding: 0.4rem 0;
+}
+
+.my__player .my__info .my__subtitle {
+  font-weight: 300;
+}
+
+.my__player .my__control {
+  color: #30384d;
+}
+
+.my__player .my__control i {
+  margin: 1.2rem;
+}
+
+.my__player .my__control i:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+}
+
+.my__player .my__more {
+  color: #30384d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.my__player .my__more .my__timer {
+  font-weight: 600;
+}
+
+.my__player .my__more i {
+  margin: 1rem;
+}
+
+.my__player .my__more i:hover {
+  cursor: pointer;
+  transform: scale(1.4);
+}

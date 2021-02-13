@@ -46,4 +46,16 @@ router.get(
   }),
 );
 
+// @desc Fetch an episode
+// @route GET /api/podcasts/e/:id
+// @access Public
+
+router.get(
+  '/e/:id',
+  asyncHandler(async (req, res) => {
+    let episode = await Episode.findById(req.params.id);
+    res.json(episode);
+  }),
+);
+
 module.exports = router;

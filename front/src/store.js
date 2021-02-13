@@ -7,11 +7,13 @@ import {
   singlePodcastReducer,
 } from './reducers/podcastsReducers';
 import { episodesListReducer } from './reducers/episodesReducers';
+import { playerStatus } from './reducers/playerReducers';
 
 const reducer = combineReducers({
   podcastsList: podcastsListReducer,
   episodesList: episodesListReducer,
   soloPodcast: singlePodcastReducer,
+  playerStatus: playerStatus,
 });
 
 const initialState = {};
