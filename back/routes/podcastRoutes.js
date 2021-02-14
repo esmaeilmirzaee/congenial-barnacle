@@ -29,7 +29,6 @@ router.route('/:id').get(getEpisodes);
 // @desc Fetch an episode
 // @route GET /api/podcasts/e/:id
 // @access Public
-
 router.route('/e/:id').get(getEpisodeById);
 
 module.exports = router;
