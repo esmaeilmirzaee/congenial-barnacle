@@ -1,61 +1,35 @@
 const express = require('express');
 const router = express.Router();
 
-const Podcast = require('../models/podcastModel');
-const Episode = require('../models/episodeModel');
+const {
+  getPodcasts,
+  getPodcastById,
+} = require('../controllers/podcastController');
 
-const asyncHandler = require('express-async-handler');
+const {
+  getEpisodes,
+  getEpisodeById,
+} = require('../controllers/episodeController');
 
 // @desc Fetch a podcast
-// @route GET /api/p/:id
+// @route GET /api/podcasts/p/:id
 // @access Public
-router.get(
-  '/p/:id',
-  asyncHandler(async (req, res) => {
-    const podcast = await Podcast.findById(req.params.id);
-    res.json(podcast);
-  }),
-);
+router.route('/p/:id').get(getPodcastById);
 
 // @desc Fetch all podcasts
 // @route GET /api/podcasts
 // @access Public
-router.get(
-  '/',
-  asyncHandler(async (req, res) => {
-    const podcasts = await Podcast.find({});
-    res.json(podcasts);
-  }),
-);
+router.route('/').get(getPodcasts);
 
-// @ desc Fetch single podcast
+// @ desc Fetch all episodes
 // @route GET /api/podcasts/:id
 // @access Public
-router.get(
-  '/:id',
-  asyncHandler(async (req, res) => {
-    const episodes = await Episode.find({
-      podcast: req.params.id,
-    });
-    if (episodes) {
-      res.json(episodes);
-    } else {
-      res.status(404);
-      throw new Error('Podcast not found');
-    }
-  }),
-);
+router.route('/:id').get(getEpisodes);
 
 // @desc Fetch an episode
 // @route GET /api/podcasts/e/:id
 // @access Public
 
-router.get(
-  '/e/:id',
-  asyncHandler(async (req, res) => {
-    let episode = await Episode.findById(req.params.id);
-    res.json(episode);
-  }),
-);
+router.route('/e/:id').get(getEpisodeById);
 
 module.exports = router;
