@@ -17,7 +17,7 @@ app.use(express.json());
 // GO DOWN
 
 app.use('/api/podcasts', podcastRoutes);
-app.use('/api/users', userRoutes);
+app.use('/api/user', userRoutes);
 
 app.get('/', (req, res) => {
   res.send({ message: 'OK' });
