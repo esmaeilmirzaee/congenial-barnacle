@@ -1,12 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import {
-  Menu,
-  Icon,
-  Container,
-  Image,
-  Button,
-  Dropdown,
-} from 'semantic-ui-react';
+import React, { useState } from 'react';
+import { Menu, Icon, Container, Image } from 'semantic-ui-react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -28,7 +21,7 @@ const Header = () => {
           <Menu.Item>
             <Image
               src={'./assets/img/HomeCast.svg'}
-              size='small'
+              size='tiny'
               as='a'
               href='https://homecast.ir'
             />

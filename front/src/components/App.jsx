@@ -1,11 +1,11 @@
 import React from 'react';
-import { Container, Reveal } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import '../assets/player_screen.css';
 import Header from './nav/Header';
-import Footer from './nav/Footer';
+
 import HomeScreen from '../screen/HomeScreen';
 import PodcastDetailScreen from '../screen/PodcastDetailScreen';
 import PlayerScreen from '../screen/PlayerScreen';
