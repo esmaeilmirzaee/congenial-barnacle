@@ -1,10 +1,25 @@
-import React, { useState } from 'react';
-import { Menu, Icon, Container, Image } from 'semantic-ui-react';
+import React, { useEffect, useState } from 'react';
+import {
+  Menu,
+  Icon,
+  Container,
+  Image,
+  Button,
+  Dropdown,
+} from 'semantic-ui-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const Header = (props) => {
+const Header = () => {
   let location = useLocation();
   const [path, setPath] = useState(location.pathname);
+
+  const userLogin = useSelector((state) => state.userLogin);
+  let { userInfo } = userLogin;
+
+  const handleProfile = () => {
+    console.log('profile');
+  };
 
   return (
     <header>
@@ -41,17 +56,29 @@ const Header = (props) => {
               <Icon name='cart'></Icon>
               Cart
             </Menu.Item>
-            <Menu.Item
-              key='signin'
-              name='Sign In'
-              active={path === '/login'}
-              onClick={(e) => setPath('/login')}
-              as={Link}
-              to='/login'
-            >
-              <Icon name='user'></Icon>
-              Sign In
-            </Menu.Item>
+            {userInfo ? (
+              <Menu.Item>
+                <Image
+                  style={{ cursor: 'pointer' }}
+                  as={Link}
+                  to='/profile'
+                  avatar
+                  src='/assets/img/elliot.jpg'
+                />
+              </Menu.Item>
+            ) : (
+              <Menu.Item
+                key='signin'
+                name='Sign In'
+                active={path === '/login'}
+                onClick={(e) => setPath('/login')}
+                as={Link}
+                to='/login'
+              >
+                <Icon name='user'></Icon>
+                Sign In
+              </Menu.Item>
+            )}
           </Menu.Menu>
         </Container>
       </Menu>
