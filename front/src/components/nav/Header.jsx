@@ -27,8 +27,8 @@ const Header = () => {
         <Container>
           <Menu.Item>
             <Image
-              src={'./logo192.png'}
-              size='mini'
+              src={'./assets/img/HomeCast.svg'}
+              size='small'
               as='a'
               href='https://homecast.ir'
             />

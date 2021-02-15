@@ -31,7 +31,7 @@ const HomeScreen = ({ title }) => {
   return (
     <div>
       <Header as='h3'>{title}</Header>
-      <Grid columns={3}>
+      <Grid container columns={3} doubling stackable textAlign='center'>
         <Grid.Row>
           {podcasts.map((p) => (
             <Podcast key={p._id} podcast={p} />
