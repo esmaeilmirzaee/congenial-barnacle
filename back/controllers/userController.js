@@ -39,4 +39,30 @@ const getUserProfile = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { authUser, getUserProfile };
+// @desc    Register a new user
+// @route   POST /api/user
+// @access  Public
+const registerUser = asyncHandler(async (req, res) => {
+  let { name, email, password } = req.body;
+  let userExists = await User.findOne({ email });
+  console.log(userExists);
+  if (userExists) {
+    res.status(400);
+    throw new Error('Please login');
+  }
+
+  let user = await User.create({ email, name, password });
+  if (user) {
+    res.status(201).json({
+      _id: user._id,
+      name: user.name,
+      email: user.email,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid data provided.');
+  }
+});
+
+module.exports = { authUser, getUserProfile, registerUser };
