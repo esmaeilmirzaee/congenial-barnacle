@@ -8,15 +8,21 @@ import {
 } from './reducers/podcastsReducers';
 import { episodesListReducer } from './reducers/episodesReducers';
 import { playerStatus } from './reducers/playerReducers';
+import { getUserReducer } from './reducers/userReducer';
 
 const reducer = combineReducers({
   podcastsList: podcastsListReducer,
   episodesList: episodesListReducer,
   soloPodcast: singlePodcastReducer,
   playerStatus: playerStatus,
+  userLogin: getUserReducer,
 });
 
-const initialState = {};
+const initialState = {
+  userLogin: localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : {},
+};
 const middleware = [thunk];
 const store = createStore(
   reducer,

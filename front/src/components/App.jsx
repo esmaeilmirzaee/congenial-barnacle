@@ -9,6 +9,7 @@ import HomeScreen from '../screen/HomeScreen';
 import PodcastDetailScreen from '../screen/PodcastDetailScreen';
 import PlayerScreen from '../screen/PlayerScreen';
 import '../assets/player_screen.css';
+import LoginScreen from '../screen/LoginScreen';
 
 const App = () => {
   let { active, episode } = useSelector((state) => state.playerStatus);
@@ -19,7 +20,9 @@ const App = () => {
       <Container style={{ margin: '1rem 0' }}>
         <main>
           <Route path='/api/podcasts/:id' component={PodcastDetailScreen} />
+          <Route path='/login' component={LoginScreen} />
           {/* TODO: Bug title doesn't work */}
+
           <Route path='/' component={HomeScreen} title={'Trending'} exact />
         </main>
       </Container>
