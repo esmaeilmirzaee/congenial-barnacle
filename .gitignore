@@ -5,6 +5,7 @@ rdb/
 # dependencies
 /node_modules/
 /**/node_modules
+/native/node_modules/
 */.pnp
 .pnp.jsl
 
