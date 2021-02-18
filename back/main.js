@@ -1,6 +1,8 @@
 const express = require('express');
 const colors = require('colors');
 const dotenv = require('dotenv');
+const cors = require('cors');
+const morgan = require('morgan');
 const connectDB = require('./config/db');
 
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
@@ -15,6 +17,11 @@ const app = express();
 // To allow body handler
 app.use(express.json());
 // GO DOWN
+app.use(cors());
+
+if (process.env.NODE_ENV == 'development') {
+  app.use(morgan());
+}
 
 app.use('/api/podcasts', podcastRoutes);
 app.use('/api/user', userRoutes);
