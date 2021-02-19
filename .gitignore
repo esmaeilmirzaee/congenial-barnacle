@@ -29,16 +29,13 @@ yarn-error.log*
 
 
 # native
-node_modules/**/*
-.expo/*
-npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-*.orig.*
-web-build/
-
-# macOS
-.DS_Store
+/native/node_modules/**/*
+/native/.expo/*
+/native/npm-debug.*
+/native/*.jks
+/native/*.p8
+/native/*.p12
+/native/*.key
+/native/*.mobileprovision
+/native/*.orig.*
+/native/web-build/
