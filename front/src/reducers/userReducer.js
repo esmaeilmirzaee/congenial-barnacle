@@ -3,6 +3,9 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
   LOGOUT_USER,
+  USER_REGISTER_REQUEST,
+  USER_REGISTER_SUCCESS,
+  USER_REGISTER_FAIL,
 } from '../constants/types';
 
 export const getUserReducer = (state = {}, action) => {
@@ -19,7 +22,23 @@ export const getUserReducer = (state = {}, action) => {
   }
 
   if (action.type === LOGOUT_USER) {
-    return { ...state, userInfo: {} };
+    return {};
+  }
+
+  return state;
+};
+
+export const registerUser = (state = {}, action) => {
+  if (action.type === USER_REGISTER_REQUEST) {
+    return { loading: true };
+  }
+
+  if (action.type === USER_REGISTER_SUCCESS) {
+    return { loading: false, userInfo: action.payload };
+  }
+
+  if (action.type === USER_REGISTER_FAIL) {
+    return { loading: false, error: action.payload };
   }
 
   return state;
