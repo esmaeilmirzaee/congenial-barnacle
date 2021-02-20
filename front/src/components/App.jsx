@@ -11,6 +11,7 @@ import PodcastDetailScreen from '../screen/PodcastDetailScreen';
 import PlayerScreen from '../screen/PlayerScreen';
 import LoginScreen from '../screen/LoginScreen';
 import ProfileScreen from '../screen/ProfileScreen';
+import RegisterScreen from '../screen/RegisterScreen';
 
 const App = () => {
   let { active, episode } = useSelector((state) => state.playerStatus);
@@ -21,6 +22,7 @@ const App = () => {
       <Container style={{ margin: '1rem 0' }}>
         <main>
           <Route path='/api/podcasts/:id' component={PodcastDetailScreen} />
+          <Route path='/api/user' component={RegisterScreen} />
           <Route path='/login' component={LoginScreen} />
           <Route path='/profile' component={ProfileScreen} />
 

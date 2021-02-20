@@ -80,7 +80,8 @@ const LoginScreen = ({ location, history }) => {
             <Message>
               Not a user?{' '}
               <Link
-                to={redirect ? `/register?redirect=${redirect}` : '/register'}
+                // to={redirect ? `/register?redirect=${redirect}` : '/register'}
+                to='/api/user'
               >
                 Register
               </Link>
