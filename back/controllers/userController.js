@@ -43,10 +43,9 @@ const getUserProfile = asyncHandler(async (req, res) => {
 const registerUser = asyncHandler(async (req, res) => {
   let { name, email, password } = req.body;
   let userExists = await User.findOne({ email });
-  console.log(userExists);
+
   if (userExists) {
-    res.status(400);
-    throw new Error('Please login');
+    res.status(400).send('Please login');
   }
 
   let user = await User.create({ email, name, password });

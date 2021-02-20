@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
+// const { urlencoded } = require('body-parser');
 
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const podcastRoutes = require('./routes/podcastRoutes');
@@ -15,23 +16,21 @@ connectDB();
 const app = express();
 // middleware
 // To allow body handler
-app.use(express.json());
 // GO DOWN
 app.use(cors());
-
-if (process.env.NODE_ENV == 'development') {
-  app.use(morgan());
-}
+app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 
 app.use('/api/podcasts', podcastRoutes);
 app.use('/api/user', userRoutes);
 
+app.use(errorHandler);
+app.use(notFound);
+
 app.get('/', (req, res) => {
   res.send({ message: 'OK' });
 });
-
-app.use(notFound);
-app.use(errorHandler);
 
 app.listen(process.env.PORT || 5000, () => {
   console.log(`I am listening on ${process.env.PORT}`.yellow.bold);
