@@ -28,7 +28,8 @@ app.use('/api/podcasts', podcastRoutes);
 app.use('/api/user', userRoutes);
 
 app.use('/api/upload', uploadRoutes);
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
+console.log(path.join(__dirname, '../uploads'));
 
 app.use(errorHandler);
 app.use(notFound);

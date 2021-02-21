@@ -24,7 +24,10 @@ const Header = () => {
               size='tiny'
               as='a'
               href='https://homecast.ir'
+              header
+              style={{ marginRight: '1rem' }}
             />
+            HomeCast
           </Menu.Item>
           <Menu.Item
             key='home'
