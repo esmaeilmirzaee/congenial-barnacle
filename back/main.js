@@ -4,11 +4,13 @@ const dotenv = require('dotenv');
 const cors = require('cors');
 const morgan = require('morgan');
 const connectDB = require('./config/db');
+const path = require('path');
 // const { urlencoded } = require('body-parser');
 
 const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const podcastRoutes = require('./routes/podcastRoutes');
 const userRoutes = require('./routes/userRoutes');
+const uploadRoutes = require('./routes/uploadRoutes');
 
 dotenv.config();
 connectDB();
@@ -24,6 +26,9 @@ app.use(morgan('dev'));
 
 app.use('/api/podcasts', podcastRoutes);
 app.use('/api/user', userRoutes);
+
+app.use('/api/upload', uploadRoutes);
+app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 app.use(errorHandler);
 app.use(notFound);

@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      rel="stylesheet"
+    />
+    <title>File uploader</title>
+  </head>
+  <body>
+    <div class="ui four column doubling stackable grid container">
+      <div class="ui raised very padded text container segment">
+        <h2 class="ui header">File Uploader</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="ui fluid action input">
+            <input type="file" name="file" id="file" placeholder="Upload" />
+            <div for="file" class="ui teal button">Upload</div>
+          </div>
+          <button class="ui primary fluid button" type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
