@@ -9,6 +9,7 @@ import {
 import { episodesListReducer } from './reducers/episodesReducers';
 import { playerStatus } from './reducers/playerReducers';
 import { getUserReducer } from './reducers/userReducer';
+import { posterReducers } from './reducers/fetchDataReducers';
 
 const reducer = combineReducers({
   podcastsList: podcastsListReducer,
@@ -16,6 +17,7 @@ const reducer = combineReducers({
   soloPodcast: singlePodcastReducer,
   playerStatus: playerStatus,
   userLogin: getUserReducer,
+  avatar: posterReducers,
 });
 
 const initialState = {

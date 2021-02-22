@@ -1,14 +1,22 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Menu, Segment, Input, Image, Button } from 'semantic-ui-react';
+import { fetchPosters } from '../actions/posterActions';
 
 const ProfileScreen = ({ history }) => {
+  const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
-  console.log(userInfo);
+  const poster = useSelector((state) => state.poster);
+
+  console.log(poster);
   const handleActive = () => {};
   if (!userInfo) {
     history.push('/login');
   }
+
+  useEffect(() => {
+    dispatch(fetchPosters(userInfo.avatar));
+  }, [history]);
 
   return (
     <>
@@ -19,12 +27,12 @@ const ProfileScreen = ({ history }) => {
         <Menu.Item name='Podcaster' active={false} onClick={handleActive} />
       </Menu>
       <Segment piled>
-        <Image
-          source={userInfo.avatar}
-          as='a'
-          size='medium'
-          href=''
-          target='_blank'
+        <img
+          src='http://localhost:5000/uploads/p/default_avatar.png'
+          style={{
+            width: '200px',
+            height: '200px',
+          }}
         />
         <Input style={styles.padding} fluid focus value={userInfo.name} />
         <Input style={styles.padding} fluid value={userInfo.email} />

@@ -8,6 +8,7 @@ const Header = () => {
   const [path, setPath] = useState(location.pathname);
 
   const userLogin = useSelector((state) => state.userLogin);
+  let { poster } = useSelector((state) => state.avatar);
   let { userInfo } = userLogin;
 
   const handleProfile = () => {
@@ -19,15 +20,16 @@ const Header = () => {
       <Menu size='large'>
         <Container>
           <Menu.Item>
-            <Image
-              src={'./assets/img/HomeCast.svg'}
-              size='tiny'
-              as='a'
-              href='https://homecast.ir'
-              header
-              style={{ marginRight: '1rem' }}
-            />
-            HomeCast
+            <a href='https://homecast.ir' style={{ color: '#30384D' }}>
+              <Image
+                src={'http://localhost:5000/uploads/p/HomeCast.svg'}
+                size='tiny'
+                as='a'
+                header
+                style={{ marginRight: '1rem' }}
+              />
+              HomeCast
+            </a>
           </Menu.Item>
           <Menu.Item
             key='home'
@@ -42,25 +44,29 @@ const Header = () => {
           </Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item
-              key='cart'
-              name='Cart'
+              key='upload'
+              name='Upload'
               active={path === '/cart'}
               onClick={(e) => setPath('/cart')}
               as={Link}
               to='/cart'
             >
-              <Icon name='cart'></Icon>
-              Cart
+              <Icon name='upload'></Icon>
+              Upload
             </Menu.Item>
             {userInfo ? (
               <Menu.Item>
-                <Image
-                  style={{ cursor: 'pointer' }}
-                  as={Link}
-                  to='/profile'
-                  avatar
-                  src='/assets/img/elliot.jpg'
-                />
+                <a href='/profile'>
+                  <img
+                    style={{
+                      cursor: 'pointer',
+                      width: '20px',
+                      height: '20px',
+                      borderRadius: '50%',
+                    }}
+                    src={poster}
+                  />
+                </a>
               </Menu.Item>
             ) : (
               <Menu.Item
