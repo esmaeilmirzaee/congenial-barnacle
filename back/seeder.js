@@ -7,10 +7,12 @@ const connectDB = require('./config/db');
 const Episode = require('./models/episodeModel');
 const Podcast = require('./models/podcastModel');
 const User = require('./models/userModel');
+const Keyword = require('./models/keywordModel');
 
 const users = require('./data/users');
 const podcasts = require('./data/podcasts');
 const episodes = require('./data/episodes');
+const keywords = require('./data/keywords');
 
 dotenv.config();
 connectDB();
@@ -20,6 +22,7 @@ const importDB = async () => {
     await Episode.deleteMany();
     await Podcast.deleteMany();
     await User.deleteMany();
+    await Keyword.deleteMany();
 
     let createdUsers = await User.insertMany(users);
     let samplePodcasts = podcasts.map((p) => {
@@ -41,9 +44,12 @@ const importDB = async () => {
     console.log(flatEpisodes);
     let createdEpisodes = await Episode.insertMany(flatEpisodes);
 
+    let createdKeywords = await Keyword.insertMany(keywords);
+
     console.log(`${createdUsers.length} users added.`.green.inverse);
     console.log(`${createdPodcasts.length} podcasts added.`.green.inverse);
     console.log(`${createdEpisodes.length} episodes added.`.green.inverse);
+    console.log(`${createdKeywords.length} keywords created`);
     process.exit();
   } catch (e) {
     console.log(`Seeder:Import ${e.message}`.red.inverse);
@@ -56,6 +62,7 @@ const destroyDB = async () => {
     await Podcast.deleteMany();
     await Episode.deleteMany();
     await User.deleteMany();
+    await Keyword.deleteMany();
 
     console.log(`DB is cleaned`.red.inverse);
     process.exit();

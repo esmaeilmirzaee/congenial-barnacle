@@ -11,6 +11,7 @@ const { notFound, errorHandler } = require('./middleware/errorMiddleware');
 const podcastRoutes = require('./routes/podcastRoutes');
 const userRoutes = require('./routes/userRoutes');
 const uploadRoutes = require('./routes/uploadRoutes');
+const keywordRoutes = require('./routes/keywordRouter');
 
 dotenv.config();
 connectDB();
@@ -29,7 +30,8 @@ app.use('/api/user', userRoutes);
 
 app.use('/api/upload', uploadRoutes);
 app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
-console.log(path.join(__dirname, '../uploads'));
+
+app.use('/api/keywords', keywordRoutes);
 
 app.use(errorHandler);
 app.use(notFound);
