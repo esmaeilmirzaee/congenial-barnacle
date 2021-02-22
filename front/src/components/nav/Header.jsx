@@ -46,10 +46,10 @@ const Header = () => {
             <Menu.Item
               key='upload'
               name='Upload'
-              active={path === '/cart'}
-              onClick={(e) => setPath('/cart')}
+              active={path === '/profile/upload'}
+              onClick={(e) => setPath('/profile/upload')}
               as={Link}
-              to='/cart'
+              to='/profile/upload'
             >
               <Icon name='upload'></Icon>
               Upload

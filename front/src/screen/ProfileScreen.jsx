@@ -1,14 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Menu, Segment, Input, Image, Button } from 'semantic-ui-react';
 import { fetchPosters } from '../actions/posterActions';
+import Profile from '../components/Profile';
+import Podcaster from '../components/Podcaster';
 
-const ProfileScreen = ({ history }) => {
+const ProfileScreen = ({ history, location }) => {
+  const [path, setPath] = useState('profile');
   const dispatch = useDispatch();
   const { userInfo } = useSelector((state) => state.userLogin);
   const poster = useSelector((state) => state.poster);
 
-  console.log(poster);
+  console.log(location);
   const handleActive = () => {};
   if (!userInfo) {
     history.push('/login');
@@ -16,31 +19,34 @@ const ProfileScreen = ({ history }) => {
 
   useEffect(() => {
     dispatch(fetchPosters(userInfo.avatar));
-  }, [history]);
+    if (location.pathname == '/user/profile') {
+      setPath('pod');
+    }
+  }, [history, location]);
 
   return (
-    <>
+    <div style={{ padding: '0 0 2rem 0' }}>
       <h1>Profile</h1>
       <Menu attached='top' tabular>
-        <Menu.Item name='Profile' active={true} onClick={handleActive} />
-        <Menu.Item name='Subscription' active={false} onClick={handleActive} />
-        <Menu.Item name='Podcaster' active={false} onClick={handleActive} />
-      </Menu>
-      <Segment piled>
-        <img
-          src='http://localhost:5000/uploads/p/default_avatar.png'
-          style={{
-            width: '200px',
-            height: '200px',
-          }}
+        <Menu.Item
+          name='Profile'
+          active={path == 'profile'}
+          onClick={() => setPath('profile')}
         />
-        <Input style={styles.padding} fluid focus value={userInfo.name} />
-        <Input style={styles.padding} fluid value={userInfo.email} />
-        <Input style={styles.padding} fluid placeholder='Password' />
-        <Input style={styles.padding} fluid placeholder='Retype password' />
-        <Button icon='save' content='Update' color='violet' />
-      </Segment>
-    </>
+        <Menu.Item
+          name='Subscription'
+          active={path == 'sub'}
+          onClick={() => setPath('sub')}
+        />
+        <Menu.Item
+          name='Podcaster'
+          active={path == 'pod'}
+          onClick={() => setPath('pod')}
+        />
+      </Menu>
+      {path == 'profile' && <Profile userInfo={userInfo} />}
+      {path == 'pod' && <Podcaster />}
+    </div>
   );
 };
 
