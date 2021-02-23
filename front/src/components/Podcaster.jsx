@@ -1,90 +1,70 @@
-import React from 'react';
-import {
-  Dropdown,
-  Divider,
-  Input,
-  TextArea,
-  Form,
-  Button,
-  Tab,
-} from 'semantic-ui-react';
+import React, { useState, useEffect } from 'react';
+import { useFetch } from 'use-http';
+import { Tab } from 'semantic-ui-react';
 
-export const CreatePodcast = () => {
-  return (
-    <Tab.Pane>
-      <h1>Upload a new podcast</h1>
-    </Tab.Pane>
-  );
-};
-
-export const CreateEpisode = () => {
-  return (
-    <Tab.Pane>
-      <h1>Create a new episode</h1>
-    </Tab.Pane>
-  );
-};
-
-const panes = [
-  {
-    menuItem: 'Podcast',
-    render: () => (
-      <Tab.Pane style={{ marginTop: '1rem' }}>
-        <h1>New podcast</h1>
-        <Divider />
-        <Dropdown
-          fluid
-          search
-          selection
-          closeOnBlur
-          closeOnEscape
-          closeOnChange
-          allowAdditions
-          multiple
-          placeholder='Keywords (3 items allowed)'
-        />
-        <Input fluid style={styles.space} placeholder="Episode's name" />
-        <Form>
-          <TextArea placeholder='Description (150 words allowed)' rows={5} />
-          <Button
-            icon='save'
-            content='Create'
-            color='violet'
-            style={styles.space}
-          />
-        </Form>
-      </Tab.Pane>
-    ),
-  },
-  {
-    menuItem: 'Episode',
-    render: () => (
-      <Tab.Pane style={{ marginTop: '1rem' }}>
-        <Dropdown
-          fluid
-          search
-          selection
-          closeOnBlur
-          closeOnEscape
-          closeOnChange
-          placeholder='Please specify your podcast'
-        />
-        <Input fluid style={styles.space} placeholder="Episode's name" />
-        <Form>
-          <TextArea placeholder='Description' rows={5} />
-          <Button
-            icon='upload'
-            content='Upload'
-            color='violet'
-            style={styles.space}
-          />
-        </Form>
-      </Tab.Pane>
-    ),
-  },
-];
+import { CreateEpisode } from './profile/podcaster/tabs/CreateEpisode';
+import { CreatePodcast } from './profile/podcaster/tabs/CreatePodcast';
 
 const Podcaster = () => {
+  const [tags, setTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
+  const [name, setName] = useState('');
+  const [brand, setBrand] = useState('');
+  const [description, setDescription] = useState('');
+
+  let handleSelectedTags = ({ value }) => {
+    console.log(value);
+  };
+  console.log(selectedTags, typeof selectedTags);
+  console.log(
+    name,
+    brand,
+    description,
+    typeof name,
+    typeof brand,
+    typeof description,
+  );
+
+  const onSubmit = () => {
+    console.log(`${name} has been created`);
+  };
+
+  const panes = [
+    {
+      menuItem: 'Podcast',
+      render: () => (
+        <CreatePodcast
+          styles={styles}
+          tags={tags}
+          value={selectedTags}
+          handleTags={(e, { value }) => setSelectedTags(value)}
+          handleName={(e) => setName(e.target.value)}
+          handleBrand={(e) => setBrand(e.target.value)}
+          handleDescription={(e) => setDescription(e.target.value)}
+          handleSubmit={onSubmit}
+        />
+      ),
+    },
+    {
+      menuItem: 'Episode',
+      render: () => <CreateEpisode styles={styles} />,
+    },
+  ];
+
+  let { get, post, response, loading, error } = useFetch(
+    'http://localhost:5000',
+  );
+
+  useEffect(() => {
+    let fetchKeywords = async () => {
+      let keywords = await get('/api/keywords');
+      let tagList = keywords.map((k) => {
+        return { key: k.tag, text: k.tag, value: k.tag };
+      });
+      setTags(tagList);
+    };
+    fetchKeywords();
+  }, []);
   return (
     <>
       <Tab
