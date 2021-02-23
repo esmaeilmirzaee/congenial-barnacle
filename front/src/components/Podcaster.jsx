@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useFetch } from 'use-http';
+import { useSelector } from 'react-redux';
 import { Tab } from 'semantic-ui-react';
 
 import { CreateEpisode } from './profile/podcaster/tabs/CreateEpisode';
@@ -11,6 +12,9 @@ const Podcaster = () => {
   const [name, setName] = useState('');
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
+
+  let { userInfo } = useSelector((state) => state.userLogin);
+  console.log(userInfo);
 
   let { get, post, response, loading, error } = useFetch(
     'http://localhost:5000',
@@ -33,6 +37,7 @@ const Podcaster = () => {
       await post(
         '/api/keywords',
         {
+          user: userInfo._id,
           name,
           brand,
           description,

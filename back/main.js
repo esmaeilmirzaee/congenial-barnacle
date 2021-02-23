@@ -25,7 +25,7 @@ app.use(express.json());
 // app.use(express.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 
-app.use('/api/podcasts', podcastRoutes);
+app.use('/api', podcastRoutes);
 app.use('/api/user', userRoutes);
 
 app.use('/api/upload', uploadRoutes);

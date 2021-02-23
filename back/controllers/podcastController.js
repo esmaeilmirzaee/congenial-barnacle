@@ -22,4 +22,16 @@ const getPodcastById = asyncHandler(async (req, res) => {
   res.json(podcast);
 });
 
-module.exports = { getPodcasts, getPodcastById };
+// @desc Create a new podcast
+// @route POST /api/podcast
+// @access Private
+const addPodcast = asyncHandler(async (req, res) => {
+  const { name, brand, description, selectedTags, user } = req.body;
+
+  console.log(name, brand, description, selectedTags, user);
+  res.status(201).send('OK');
+});
+
+module.exports = { getPodcasts, getPodcastById, addPodcast };
+
+// export MANPAGER ="sh -c 'col -bx | bat -l man -p'"
