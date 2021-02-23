@@ -12,21 +12,37 @@ const Podcaster = () => {
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
 
-  let handleSelectedTags = ({ value }) => {
-    console.log(value);
-  };
-  console.log(selectedTags, typeof selectedTags);
-  console.log(
-    name,
-    brand,
-    description,
-    typeof name,
-    typeof brand,
-    typeof description,
+  let { get, post, response, loading, error } = useFetch(
+    'http://localhost:5000',
   );
 
-  const onSubmit = () => {
-    console.log(`${name} has been created`);
+  useEffect(() => {
+    let fetchKeywords = async () => {
+      let keywords = await get('/api/keywords');
+      let tagList = keywords.map((k) => {
+        return { key: k.tag, text: k.tag, value: k.tag };
+      });
+      setTags(tagList);
+    };
+    fetchKeywords();
+  }, []);
+
+  const onSubmit = async () => {
+    if (name && brand && description && selectedTags) {
+      console.log(`${name} created.`);
+      await post(
+        '/api/keywords',
+        {
+          name,
+          brand,
+          description,
+          selectedTags,
+        },
+        { header: { 'Content-Type': 'application/json' } },
+      );
+    } else {
+      console.log('There is something wrong.');
+    }
   };
 
   const panes = [
@@ -51,20 +67,6 @@ const Podcaster = () => {
     },
   ];
 
-  let { get, post, response, loading, error } = useFetch(
-    'http://localhost:5000',
-  );
-
-  useEffect(() => {
-    let fetchKeywords = async () => {
-      let keywords = await get('/api/keywords');
-      let tagList = keywords.map((k) => {
-        return { key: k.tag, text: k.tag, value: k.tag };
-      });
-      setTags(tagList);
-    };
-    fetchKeywords();
-  }, []);
   return (
     <>
       <Tab
